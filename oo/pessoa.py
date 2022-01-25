@@ -10,7 +10,7 @@ class Pessoa:
 
 if __name__ == '__main__':
     maite = Pessoa(nome='Maite', idade=0)
-    denian = Pessoa(maite, noa, nome='Denian', idade=21)
+    denian = Pessoa(maite, nome='Denian', idade=21)
     print(Pessoa.cumprimentar(denian))
     print(id(denian))
     print(denian.cumprimentar())
@@ -18,3 +18,7 @@ if __name__ == '__main__':
     print(denian.idade)
     for filho in denian.filhos:
         print(filho.nome)
+    denian.sobrenome = 'Machado'
+    print(denian.__dict__)
+    del denian.sobrenome
+    print(denian.__dict__)
