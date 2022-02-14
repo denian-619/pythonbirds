@@ -99,17 +99,32 @@ class Motor:
         self.velocidade += 1
 
     def frear(self):
-        if self.velocidade <= 1:
-            self.velocidade = 0
-        else:
-            self.velocidade -= 2
+        self.velocidade -= 2
+        self.velocidade = max(0,self.velocidade)
 
 
-
+NORTE = 'Norte'
+SUL = 'Sul'
+LESTE = 'Leste'
+OESTE = 'Oeste'
 class Direcao:
-    direcoes = ['Norte', 'Leste','Sul', 'Oeste']
-    def __init__(self, valor = direcoes[0]):
-        self.valor = valor
+    rotacao_a_direita = {
+        NORTE: LESTE, LESTE: SUL, SUL: OESTE, OESTE: NORTE
+    }
+
+    rotacao_a_esquerda = {
+        NORTE: OESTE, OESTE: SUL, SUL: LESTE, LESTE: NORTE
+    }
+
+    def __init__(self):
+        self.valor = NORTE
+
+    def girar_a_direita(self):
+        self.valor = self.rotacao_a_direita[self.valor]
+
+    def girar_a_esquerda(self):
+        self.valor = self.rotacao_a_esquerda[self.valor]
+
 
 class Carro:
     pass
